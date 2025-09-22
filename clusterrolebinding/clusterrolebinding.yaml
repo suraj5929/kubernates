@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2025-09-22T17:37:12Z"
+  name: group1-role-binding-cka
+  resourceVersion: "3728"
+  uid: fd9aba8b-1b63-4ae1-802a-c425c4886ab2
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: group1-role-cka
+subjects:
+- kind: ServiceAccount
+  name: group1-sa
+  namespace: default
