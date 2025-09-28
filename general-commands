@@ -1,0 +1,2 @@
+ #Using the kubectl CLI tool, list all the services created in your Kubernetes cluster, across all namespaces
+ k get services  --all-namespaces
