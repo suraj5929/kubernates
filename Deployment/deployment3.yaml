@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: postgres-deployment-68d5bf48b6-vv7cn
+  namespace: default
+  labels:
+    app: postgres
+    pod-template-hash: 68d5bf48b6
+spec:
+  containers:
+  - name: postgres-container
+    image: postgres:latest
+    imagePullPolicy: Always
+    ports:
+    - containerPort: 5432
+      protocol: TCP
+    env:
+    - name: POSTGRES_DB
+      valueFrom:
+        configMapKeyRef:
+          name: postgres-db-config
+          key: POSTGRES_DB
+    - name: POSTGRES_USER
+      valueFrom:
+        configMapKeyRef:
+          name: postgres-db-config
+          key: POSTGRES_USER
+    - name: POSTGRES_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: postgres-db-secret
+          key: POSTGRES_PASSWORD
+  restartPolicy: Always
