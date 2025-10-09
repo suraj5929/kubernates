@@ -1,0 +1,58 @@
+Install and Configure Helm Repository
+In this step, you'll set up Helm repositories and verify the installation.
+
+First, verify that Helm is installed and check the version:
+
+helm version
+Add the official nginx Helm repository:
+
+helm repo add nginx-stable https://helm.nginx.com/stable
+Update the repository to fetch the latest chart information:
+
+helm repo update
+Search for available nginx charts:
+
+helm search repo nginx
+Get detailed information about the nginx-ingress chart:
+
+helm show chart nginx-stable/nginx-ingress
+View the default values for this chart:
+
+helm show values nginx-stable/nginx-ingress
+List the configured repositories:
+
+helm repo list
+
+
+Install Application Using Helm Chart
+Now you'll install an nginx ingress controller using the Helm chart with specific requirements.
+
+Create a namespace for the ingress controller:
+
+kubectl create namespace nginx-ingress
+Install the nginx-ingress chart with specific configurations:
+
+helm install my-nginx-ingress nginx-stable/nginx-ingress \
+  --namespace nginx-ingress \
+  --set controller.replicaCount=2 \
+  --set controller.service.type=NodePort \
+  --set controller.service.nodePorts.http=30080 \
+  --set controller.service.nodePorts.https=30443
+Check the Helm release status:
+
+helm status my-nginx-ingress -n nginx-ingress
+List all Helm releases:
+
+helm list -A
+Verify the pods are running:
+
+kubectl get pods -n nginx-ingress
+Check the service configuration:
+
+kubectl get svc -n nginx-ingress
+Get the release history:
+
+helm history my-nginx-ingress -n nginx-ingress
+View the generated Kubernetes manifests:
+
+helm get manifest my-nginx-ingress -n nginx-ingress
