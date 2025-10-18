@@ -15,3 +15,7 @@ kubectl run nginx --image=nginx
 #Using only kubectl , change the image from httpd to httpd:2.4.54 . List the events of the replicasets in the cluster.
 
  k set image deployments apache httpd=httpd:2.4.54
+
+
+ #Using kubectl , roll back to a previous version of the deployment (the deployment with the image httpd ).
+ kubectl rollout undo deploy apache
