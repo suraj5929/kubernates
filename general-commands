@@ -1,5 +1,6 @@
   #  get pods
   kubectl get pods
+  
 
  
  
