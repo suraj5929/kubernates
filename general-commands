@@ -26,3 +26,10 @@ kubectl run nginx --image=nginx
  #Using kubectl , roll back to a previous version of the deployment (the deployment with the image httpd ).
  kubectl rollout undo deploy apache
 
+
+
+# openssl command to see pki file
+openssl x509 -noout -text -in /etc/kubernetes/pki/apiserver.crt
+
+# openssl create csr 
+openssl req -new -key carlton.key -subj "/CN=carlton" -out carlton.csr
