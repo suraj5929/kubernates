@@ -33,3 +33,16 @@ openssl x509 -noout -text -in /etc/kubernetes/pki/apiserver.crt
 
 # openssl create csr 
 openssl req -new -key carlton.key -subj "/CN=carlton" -out carlton.csr
+
+# check ip table rules
+iptables-save | grep p2-service
+
+# container logs
+crictl logs < container  name>
+
+# get container info
+crictl inspect <container name>
+
+# container list
+crictl ps 
+

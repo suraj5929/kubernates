@@ -16,5 +16,6 @@ spec:
         matchLabels:
           app: trusted
   egress:
+  # allow all egress traffic
   - to:
     - podSelector: {}
