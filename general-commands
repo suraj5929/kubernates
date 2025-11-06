@@ -46,4 +46,7 @@ crictl inspect <container name>
 # container list
 crictl ps 
 
+# pod with highest priority
+k -n management get pod -o yaml | grep -i priority -B 20
+
 
